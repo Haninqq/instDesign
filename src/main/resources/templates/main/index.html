@@ -36,10 +36,17 @@
       <div id="logoContainer">
         <img id="logo" src="/logo/instDesignLogo.png" onclick="location.href='/'">
       </div>
-      <div id="userPanel">
-        <a href="/auth/login">로그인</a>
-        <a href="/auth/register">회원가입</a>
-      </div>
+
+        <div id="userPanelGuest" th:if="${session.user == null}">
+          <a href="/auth/login">로그인</a>
+          <a href="/auth/register">회원가입</a>
+        </div>
+
+        <div id="userPanelLoggedIn" th:if="${session.user != null}">
+          <a href="/auth/logout">로그아웃</a>
+          <a href="/auth/mypage">마이페이지</a>
+        </div>
+
     </div>
   </header>
   <main layout:fragment="content" style="margin-top:50px;">
