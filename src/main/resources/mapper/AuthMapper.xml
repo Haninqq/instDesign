@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.data7.instdesign.mapper.AuthMapper">
+    <select id="checkId" resultType="java.lang.String">
+        SELECT userId FROM member
+        WHERE userId = #{userId}
+    </select>
+    <select id="checkEmail" resultType="java.lang.String">
+        SELECT email FROM member
+        WHERE email = #{email}
+    </select>
+    <insert id="register">
+        INSERT INTO member (userId, name, password, email, phone)
+        VALUES (#{userId}, #{name}, #{password}, #{email}, #{phone})
+    </insert>
+    <select id="findByUserId" resultType="com.data7.instdesign.dto.auth.UserDTO">
+        SELECT userId, password, name, email, phone FROM member
+        WHERE userId = #{userId}
+    </select>
+    <insert id="saveToken">
+        INSERT INTO remember_me_token (token, userId)
+        VALUES (#{token}, #{userId})
+    </insert>
+    <select id="findByToken" resultType="java.lang.String">
+        SELECT userId FROM remember_me_token
+        WHERE token = #{token}
+    </select>
+    <delete id="deleteToken">
+        DELETE FROM remember_me_token
+        WHERE userId = #{userId}
+    </delete>
+</mapper>
