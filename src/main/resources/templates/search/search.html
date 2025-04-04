@@ -115,14 +115,14 @@
             </div>
 
             <!-- 교수학습단계 선택 (multiple 선택 가능) -->
-            <div class="mb-3">
-                <label class="form-label fw-bold">교수학습단계</label>
-                <div class="btn-toggle-group" id="stepContainer">
-                    <button type="button" class="btn btn-outline-secondary active">도입</button>
-                    <button type="button" class="btn btn-outline-secondary active">전개</button>
-                    <button type="button" class="btn btn-outline-secondary active">정리</button>
-                </div>
-            </div>
+<!--            <div class="mb-3">-->
+<!--                <label class="form-label fw-bold">교수학습단계</label>-->
+<!--                <div class="btn-toggle-group" id="stepContainer">-->
+<!--                    <button type="button" class="btn btn-outline-secondary active">도입</button>-->
+<!--                    <button type="button" class="btn btn-outline-secondary active">전개</button>-->
+<!--                    <button type="button" class="btn btn-outline-secondary active">정리</button>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <!-- 학습목표 입력 -->
             <div class="mb-4">
@@ -296,15 +296,15 @@
         }
     });
 
-    document.getElementById('stepContainer').addEventListener('click', e=> {
-       if(e.target.matches('button')) {
-           if(e.target.classList.contains('active')){
-               e.target.classList.remove('active');
-           } else {
-               e.target.classList.add('active');
-           }
-       }
-    });
+    // document.getElementById('stepContainer').addEventListener('click', e=> {
+    //    if(e.target.matches('button')) {
+    //        if(e.target.classList.contains('active')){
+    //            e.target.classList.remove('active');
+    //        } else {
+    //            e.target.classList.add('active');
+    //        }
+    //    }
+    // });
 
     document.getElementById('reset-button').addEventListener('click', () => {
 
