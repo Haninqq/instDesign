@@ -323,6 +323,52 @@
     });
 
 
+    //선택사항 없을 시 alert
+    document.getElementById('submitBtn').addEventListener('click', async function () {
+        const activeSchool = document.querySelector('.tab-btn.active');
+        const activeGrade = document.querySelector('.btn-check.active');
+        const activeSubject = document.querySelector('.btn-outline-secondary.active');
+
+        if(!activeSchool) {
+            alert('학교급을 선택해주세요.');
+        }
+        if(!activeGrade){
+            alert('학년을 선택해주세요.');
+        }
+        if(!activeSubject){
+            alert('과목을 선택해주세요.');
+        }
+        if(activeSchool && activeGrade && activeSubject){
+            let formData = {
+                'school': activeSchool.innerText,
+                'grade': activeGrade.dataset.grade,
+                'subject': activeSubject.innerText,
+                'goal': document.getElementById('goalInput').value
+            }
+            try{
+                const result = await fetch('search/api/goal', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                const response = await result.json();
+
+                if(response.success){
+                    alert(response.body);
+                } else {
+                    alert(response.message);
+                }
+            } catch (error){
+                console.error('Error:', error);
+                alert('학습목표 제출 중 오류가 발생했습니다.');
+            }
+        }
+
+
+    });
+
+
+
 </script>
 </div>
 </body>
